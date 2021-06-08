@@ -75,6 +75,7 @@ handle_info(timeout, State) ->
   {stop, normal, State}.
 
 terminate(Reason, State) ->
+  sc_store:delete(self()), % delete the mapping of key to element's pid
   ok.
 
 time_left(StartTime, infinity) ->

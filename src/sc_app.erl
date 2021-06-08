@@ -17,6 +17,7 @@
 
 start(StartType, StartArgs) ->
   % we only want to start the supervisor for now
+  sc_store:init(),
   case sc_sup:start_link() of
     {ok, Pid} -> {ok, Pid};
     Other     -> {error, Other}
