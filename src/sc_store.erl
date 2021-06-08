@@ -1,6 +1,5 @@
 %%%-------------------------------------------------------------------
 %%% @author viveks
-%%% @copyright (C) 2021, <COMPANY>
 %%% @doc This module implements mapping between key and process ids which hold the values.
 %%%      Uses ETS which is an in-memory hash table to store this mapping.
 %%%      This module is supposed to abstract the ETS storage such that in future, we could

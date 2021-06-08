@@ -1,8 +1,9 @@
 %%%-------------------------------------------------------------------
-%%% @author viveks
-%%% @copyright (C) 2021, <COMPANY>
-%%% @doc
-%%%
+%%% @author Vivek Sah
+%%% @doc In this module, we will setup `simple_one_for_one` supervision
+%%% which means it can start any number of just one type of child processes.
+%%% However, no child process is started when the supervisor starts, but will
+%%% dynamically added.
 %%% @end
 %%% Created : 07. Jun 2021 10:42 PM
 %%%-------------------------------------------------------------------
@@ -17,11 +18,6 @@
 
 -define(SERVER, ?MODULE).
 
-%%%----------
-%%% In this module, we will setup `simple_one_for_one` supervision
-%%% which means it can start any number of just one type of child processes.
-%%% However, no child process is started when the supervisor starts, but will
-%%% dynamically added.
 
 start_link() ->
   supervisor:start_link({local, ?SERVER}, ?MODULE, []).

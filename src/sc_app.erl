@@ -1,8 +1,6 @@
 %%%-------------------------------------------------------------------
 %%% @author viveks
-%%% @copyright (C) 2021, <COMPANY>
-%%% @doc
-%%%
+%%% @doc This is the application module which starts/stops the application
 %%% @end
 %%% Created : 07. Jun 2021 10:42 PM
 %%%-------------------------------------------------------------------

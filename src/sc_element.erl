@@ -1,8 +1,11 @@
 %%%-------------------------------------------------------------------
 %%% @author viveks
-%%% @copyright (C) 2021, <COMPANY>
-%%% @doc
-%%%
+%%% @doc When a element is to inserted, users call sc_element_create(...)
+%%% This calls the supervisor's sc_sup:start_child function
+%%% which then calls sc_element:start_link/2 function
+%%% Note that we dont have a registered name for sc_element
+%%% as there can be so many of them, so user needs to know the Pid of the
+%%% element, will address later
 %%% @end
 %%% Created : 07. Jun 2021 11:22 PM
 %%%-------------------------------------------------------------------
@@ -12,20 +15,11 @@
 
 
 %% API
+-export([start_link/2, create/2, create/1, fetch/1, replace/2, delete/1]).
 -export([init/1, handle_call/3, handle_cast/2]).
 -define(SERVER, ?MODULE).
 -define(DEFAULT_LEASE_TIME, (60*60*24)).
 -record(state, {value, lease_time, start_time}).
-
-
-%%%-----------------------------
-%%% When a element is to inserted, users call sc_element_create(...)
-%%% This calls the supervisor's sc_sup:start_child function
-%%% which then calls sc_element:start_link/2 function
-%%% Note that we dont have a registered name for sc_element
-%%% as there can be so many of them, so user needs to know the Pid of the
-%%% element, will address later
-%%%-----------------------------
 
 start_link(Value, LeaseTime) ->
   gen_server:start(?MODULE, [Value, LeaseTime], []).
